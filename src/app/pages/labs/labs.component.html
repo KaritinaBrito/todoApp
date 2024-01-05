@@ -1,0 +1,164 @@
+<div class="container">
+  <h1>Hola nuevo proyecto</h1>
+  <h2>{{welcome}}</h2>
+  @for (task of tasks(); track task) {
+  <ul>
+    <li>{{task}} </li>
+  </ul>
+  }
+  <hr />
+  <h2>{{ 'Hola '.repeat(5) }}</h2>
+  <p>La suma de 3 + 3 => {{3 + 3}}</p>
+  <p>Hola soy {{ name() }} y tengo {{age}} añitos</p>
+  <hr />
+  <img [src]="person().avatar" alt="random photo" />
+  <input type="number" [value]="person().age" placeholder="propiedad">
+  <button [disabled]="disabled">Click me</button>
+  <p>Person: {{person().name}}</p>
+  <hr />
+  <button (click)="clickHandler()">Click me</button>
+  <button (dblclick)="clickHandler()">DoubleClick me</button>
+  <p>(change)</p>
+  <input type="number" [value]="person().age" (change)="changeHandler($event)">
+  <p>(change)</p>()
+  <input type="text" [value]="person().name" (keydown)="changeHandler($event)">
+  <p>(keydown)</p>
+  <input type="text" [value]="person().name" (keydown)="keydown($event)">
+  <p>(keydown Shift + t)</p>
+  <input type="text" [value]="person().name" (keydown.shift.t)="clickHandler()">
+  <ul>
+    <p>Total: {{tasks().length}}</p>
+    @for (task of tasks(); track task; let i = $index) {
+    <li>
+      {{i}} {{ task }}
+    </li>
+    }
+  </ul>
+  <hr />
+  <h1>Signals</h1>
+  <input type="text" [value]="name()" (keydown)="changeHandler($event)">
+  <p>name: {{name()}}</p>
+  <hr />
+  @if (1 !== 1) {
+  <div>
+    My content
+  </div>
+  }
+  @if (name() === 'Karen') {
+  <div>
+    My content
+  </div>
+  }
+  @if(name() === 'Karen'){
+  <div>Soy Karen</div>
+  }
+  <input type="number" [value]="person().age" (change)="changeAge($event)">
+  <h2>New sintax if else</h2>
+  @if(person().name === 'Karen' && person().age > 18 ){
+  <div> soy karen y soy mayor de 18</div>
+  } @else {
+  <div>Soy karen y soy menor de edad</div>
+  }
+  @if (person().name === 'Karen' && person().age > 18) {
+  <div>
+    soy karen y soy mayor de 18
+  </div>
+  } @else {
+  Soy karen y soy menor de edad
+  }
+  <hr />
+  <input type="text" [value]="person().name" (change)="changeName($event)">
+  <div>
+    @switch (person().name) {
+    @case ('nicolas') {
+    <p>Yo soy nicolas</p>
+    }
+    @case ('julian') {
+    <p>Yo soy julian</p>
+    }
+    @case ('Karen') {
+    <p>Yo soy Karen</p>
+    }
+    @case ('valentina') {
+    <p>Yo soy valentina</p>
+    }
+    @default {
+    <p>No estoy en la lista</p>
+    }
+    }
+  </div>
+  <hr />
+  <input type="color" [formControl]="colorControl">
+  <p>color: {{ colorControl.value }}</p>
+  <svg>
+    <g>
+      <rect x="0" y="0" height="100" width="100" [attr.fill]="colorControl.value" />
+    </g>
+  </svg>
+  <hr />
+  <input type="number" [formControl]="widthControl">
+  <span class="box" [style.width.px]="widthControl.value"></span>
+  <hr />
+  <p>
+    <input type="text" [formControl]="nameControl"> <br />
+    <span class="message-error" [class.show]="nameControl.invalid && nameControl.touched">Nombre invalido</span>
+  </p>
+  <p>
+    <input type="text" [formControl]="nameControl"> <br />
+  </p>
+  <h2>new Form</h2>
+  <ul>
+    <p>Total: {{tasks().length}}</p>
+    @for (task of tasks(); track task; let i = $index) {
+    <li>
+      {{i}} {{ task }}
+    </li>
+    }
+  </ul>
+  <ul>
+    @for(task of tasks(); track task; let i = $index){
+    <li>{{i}} {{task}}</li>
+    } @empty {
+    <li><strong>La lista esta en vacio</strong></li>
+    }
+  </ul>
+  <h2>New Switch</h2>
+  <div>
+    @switch (person().name) {
+    @case ('nicolas') {
+    <p>Yo soy nicolas</p>
+    }
+    @case ('julian') {
+    <p>Yo soy julian</p>
+    }
+    @case ('Karen') {
+    <p>Yo soy Karen</p>
+    }
+    @case ('valentina') {
+    <p>Yo soy valentina</p>
+    }
+    @default {
+    <p>No estoy en la lista</p>
+    }
+    }
+  </div>
+  <div>
+    @switch (person().name) {
+    @case ('nicolas') {
+    <p>Yo soy nicolas</p>
+    }
+    @case ('julian') {
+    <p>Yo soy julian</p>
+    }
+    @case ('Karen') {
+    <p>Yo soy Karen</p>
+    }
+    @case ('valentina') {
+    <p>Yo soy valentina</p>
+    }
+    @default {
+    <p>No estoy en la lista</p>
+    }
+    }
+  </div>
+</div>
